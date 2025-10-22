@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(robocopy:*)",
+      "Bash(rmdir:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(tree:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx prisma:*)",
+      "Bash(taskkill:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd multi-user authentication and database support\n\n- Set up Prisma with PostgreSQL for data persistence\n- Implement NextAuth for user authentication\n- Add beta key system for user registration\n- Create login/signup UI with beta key validation\n- Migrate from localStorage to database storage\n- Add API routes for wallets and portfolio snapshots\n- Update portfolio history tracking (14 days, 30-min intervals)\n- Add user session management and sign out\n- Include Vercel deployment configuration\n- Add comprehensive deployment guide\n\nGenerated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(node:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git log:*)",
+      "Bash(git config:*)",
+      "Read(//c/Users/Herbie/Desktop/cryptfolio-clean/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

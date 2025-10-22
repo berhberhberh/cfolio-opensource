@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  username      String    @unique
+  password      String
+  email         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  wallets       Wallet[]
+  snapshots     PortfolioSnapshot[]
+  usedBetaKey   BetaKey?  @relation(fields: [betaKeyId], references: [id])
+  betaKeyId     String?   @unique
+}
+
+model BetaKey {
+  id            String    @id @default(cuid())
+  key           String    @unique
+  isUsed        Boolean   @default(false)
+  usedBy        User?
+  createdAt     DateTime  @default(now())
+  usedAt        DateTime?
+}
+
+model Wallet {
+  id            String    @id @default(cuid())
+  address       String
+  chain         String
+  label         String?
+  addedAt       DateTime  @default(now())
+
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, address, chain])
+}
+
+model PortfolioSnapshot {
+  id            String    @id @default(cuid())
+  timestamp     DateTime  @default(now())
+  totalValue    Float
+  assetValues   Json
+
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, timestamp])
+}
